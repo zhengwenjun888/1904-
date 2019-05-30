@@ -16,22 +16,26 @@ for i in range(len(alist)-1):
         alist[j+1]=num
 print(alist)
 
-
 # 排正序
 alist.sort()
 print(alist)
 # 排倒序
+alist.sort(reverse=True)
 alist.reverse()
 print(alist)
-#列表去重
+
+
+#列表去重方法(1)
 al=[1,2,3,4,5,1,2,3]
 al=list(set(al))
-
 print(al)
-# 列表去重方法(2),先元素循环再if判断
+
+# 列表去重方法(2),先元素循环再if判断追加
 li=[1,2,3,4,5,1,2,3]
+# 声明空表量
 new_li=[]
 for i in li:
     if i not in new_li:
+        # 追加判断后元素
        new_li.append(i)
 print(new_li)
