@@ -4,31 +4,34 @@ for i in range (1,10):
         print('%s*%s=%2s'%(i,j,i*j),end='  ')
     print(' ')
 # 冒泡排序
-list=[8,1,2,5,3,6,4,7,9,]
-for i in range(len(list)-1):
-    for j in range(len(list)-1-i):
-        m=list[j]
-        n=list[j+1]
+alist=[8,1,2,5,3,6,4,7,9,]
+for i in range(len(alist)-1):
+    for j in range(len(alist)-1-i):
+        m=alist[j]
+        n=alist[j+1]
         if m < n :
             continue
-        num=list[j]
-        list[j]=list[j+1]
-        list[j+1]=num
-print(list)
+        num=alist[j]
+        alist[j]=alist[j+1]
+        alist[j+1]=num
+print(alist)
 
 
 # 排正序
-list.sort()
-print(list)
+alist.sort()
+print(alist)
 # 排倒序
-list.reverse()
-print(list)
+alist.reverse()
+print(alist)
+#列表去重
+al=[1,2,3,4,5,1,2,3]
+al=list(set(al))
 
-# 水仙花
-# for n in range(100,1000):
-#     i=n/100
-#     j=n/10%10
-#     k=n%10
-#     print(i)
-#     if n==i**3+j**3+k**3:
-#         print(n)
+print(al)
+# 列表去重方法(2),先元素循环再if判断
+li=[1,2,3,4,5,1,2,3]
+new_li=[]
+for i in li:
+    if i not in new_li:
+       new_li.append(i)
+print(new_li)
