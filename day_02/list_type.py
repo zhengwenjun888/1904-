@@ -27,16 +27,6 @@ al=[1,2,3,4,5,1,2,3]
 al=list(set(al))
 print(al)
 
-# 作业
-dlist=['jjj','jk','ii','ss',55]
-print(dlist[2])
-print(dlist[1:4])
-dlist.pop(3)
-d=['dd',789]
-dlist.extend(d)
-print(dlist)
-dlist[0]=5
-print(len(dlist))
 
 
 
