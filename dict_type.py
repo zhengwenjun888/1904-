@@ -25,3 +25,5 @@ print(type(lo))
 # 字符转字典
 json_loads = json.loads(lo)
 print(type(json_loads))
+
+
