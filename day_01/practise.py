@@ -3,6 +3,8 @@ for i in range (1,10):
     for j in range (1,i+1):
         print('%s*%s=%2s'%(i,j,i*j),end='  ')
     print(' ')
+
+
 # 冒泡排序
 alist=[8,1,2,5,3,6,4,7,9,]
 for i in range(len(alist)-1):
@@ -39,3 +41,4 @@ for i in li:
         # 追加判断后元素
        new_li.append(i)
 print(new_li)
+
