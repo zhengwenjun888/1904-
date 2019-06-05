@@ -1,7 +1,7 @@
 
 from Common import Request,Assert
 
-url='http://192.168.1.137:8080/'
+url='http://192.168.60.132:8080/'
 
 request = Request.Request()
 
