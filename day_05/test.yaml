@@ -1,0 +1,13 @@
+
+url='http://192.168.60.132:8080'
+
+name: John Smith
+age: 37
+spouse:
+    name: Jane Smith
+    age: 25
+children:
+    -  name: Jimmy Smith
+       age: 15
+    -  name: Jenny Smith
+       age: 1

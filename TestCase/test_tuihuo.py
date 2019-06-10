@@ -6,10 +6,8 @@ request=Request.Request()
 assertion =Assert.Assertions()
 head={}
 idd=0
-
-
 list=[]
-excel_list = read_excel.read_excel_list('../table/tuihuo.xlsx')
+excel_list = read_excel.read_excel_list('./table/tuihuo.xlsx')
 for i in range(len(excel_list)):
     list.append(excel_list[i].pop())
 
@@ -55,7 +53,8 @@ class Test_tuihuo():
 
     @allure.story('删除')
     def test_delete(self):
-        response = request.post_request(url='http://192.168.60.132:8080/returnReason/delete',params={'ids':idd},headers=head)
+        response = request.post_request(url='http://192.168.60.132:8080/returnReason/delete',
+                                        params={'ids':idd},headers=head)
         json_dict = response.json()
         assertion.assert_code(response.status_code, 200)
         assertion.assert_in_text(json_dict['message'], '成功')

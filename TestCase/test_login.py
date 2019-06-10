@@ -8,7 +8,7 @@ assertion = Assert.Assertions()
 shell= Shell.Shell
 
 idds=[]
-excel_list = read_excel.read_excel_list('../table/demlu.xlsx')
+excel_list = read_excel.read_excel_list('./table/demlu.xlsx')
 for i in range(len(excel_list)):
     idds.append(excel_list[i].pop())
 head = {}
@@ -59,12 +59,4 @@ class Test_Login():
         resp_dict = resp.json()
         assertion.assert_code(resp.status_code,200)
         assertion.assert_in_text(resp_dict['message'],msg)
-
-
-pytest.main(['-s','-q','--alluredir','../Report/xml/','../TestCase'])
-cmd="allure generate ../Report/xml/ -o ../Report/html/ --clean"
-try:
-    shell.invoke(cmd)
-except Exception:
-    print('html错误')
 

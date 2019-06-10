@@ -12,7 +12,7 @@ lg=login.Test_login()
 request = Request.Request()
 head={}
 lists=[]
-excel_list = read_excel.read_excel_list('../table/tianjia.xlsx')
+excel_list = read_excel.read_excel_list('./table/tianjia.xlsx')
 for i in range(len(excel_list)):
     lists.append(excel_list[i].pop())
 
@@ -58,10 +58,3 @@ class Test_shangping():
         assertion.assert_in_text(resp_dict['message'],msg)
 
 
-pytest.main(['-s','-q','--alluredir','../Report/xml/','../TestCase'])
-cmd="allure generate ../Report/xml/ -o ../Report/html/ --clean"
-try:
-    shell.invoke(cmd)
-except Exception:
-
-    print('html错误')
