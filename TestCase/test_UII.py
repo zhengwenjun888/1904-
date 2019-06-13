@@ -1,10 +1,14 @@
 from  selenium import webdriver
 import time
 
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common.keys import Keys
+
 from selenium.webdriver.support.select import Select
 
 driver=webdriver.Chrome("../chromedriver/chromedriver.exe")
-driver.get("http://192.168.60.146:8080/demo1.html")
+driver.maximize_window()
+driver.get("http://192.168.60.146:8082/demo1.html")
 driver.find_element_by_xpath('//input[@type="text"]').clear()
 time.sleep(2)
 driver.find_element_by_xpath('//input[@type="text"]').send_keys('你好')
@@ -39,20 +43,34 @@ Select(mm).select_by_visible_text('周龙2')
 
 time.sleep(2)
 # 超链接操作
-driver.find_element_by_link_text('问问度娘')
+action=ActionChains(driver)
+ele=driver.find_element_by_link_text('问问度娘')
+action.key_down(Keys.CONTROL).click('ele').key_up(Keys.CONTROL).perform()
 time.sleep(2)
-# 后退
-driver.back()
-time.sleep(2)
-# 前进
-driver.forward()
-time.sleep(2)
-# 刷新
-driver.refresh()
-# 进入iframe框
-driver.switch_to.frame('driver.find_element_by_xpath('')')
-# 退出ifram框
-driver.switch_to.default_content()
+
+# 浏览器title切换
+handle=driver.window_handles
+for i in handle:
+    driver.switch_to.window(i)
+    if(driver.title.__contains__('问问度娘')):
+        break
+
+# # 后退
+# driver.back()
+# time.sleep(2)
+# # 前进
+# driver.forward()
+# time.sleep(2)
+# # 刷新
+# driver.refresh()
+# # 进入iframe框
+# driver.switch_to.frame('driver.find_element_by_xpath('')')
+# # 退出ifram框
+# driver.switch_to.default_content()
+#
+
+
+
 
 
 time.sleep(3)

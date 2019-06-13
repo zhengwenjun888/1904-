@@ -24,7 +24,7 @@ def shot(func):
 
 class baseUI():
 
-    def __init__(self,driver):
+    def __init__(self, driver: object) -> object:
         self.driver = driver
 
 
@@ -33,7 +33,7 @@ class baseUI():
        return WebDriverWait(self.driver, 5, 0.3).until(EC.presence_of_element_located((By.XPATH,xpath)))
 
     @shot
-    def send_keys(self,step,xpath,text):
+    def send_keys(self, step: object, xpath: object, text: object) -> object:
         '''
         文本输入框清空并填值
         :param step:操作步骤

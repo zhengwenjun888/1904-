@@ -1,11 +1,11 @@
-from Common import Tools,read_excel,Assert,Request
+from Common import Tools1,read_excel,Assert,Request
 import pytest
 request = Request.Request()
 assertion = Assert.Assertions()
-phone=Tools.phone_num()
-pwd=Tools.random_str_abc(2)+Tools.random_123(4)
-pwd1=Tools.random_str_abc(2)+Tools.random_123(5)
-userName=Tools.random_str_abc(3)+Tools.random_123(2)
+phone=Tools1.phone_num()
+pwd= Tools1.random_str_abc(2) + Tools1.random_123(4)
+pwd1= Tools1.random_str_abc(2) + Tools1.random_123(5)
+userName= Tools1.random_str_abc(3) + Tools1.random_123(2)
 import allure
 head={}
 url='http://192.168.60.132:1811'

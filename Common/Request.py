@@ -7,7 +7,7 @@ import os
 import random
 import requests
 from Common import Log
-from Common.Consts import *
+from Common.Consts1 import *
 
 
 class Request:

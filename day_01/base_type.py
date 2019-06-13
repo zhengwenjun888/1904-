@@ -1,9 +1,3 @@
-def def1():
-    print('test1')
-def def2():
-    print('test2')
-def def3():
-    print('test3')
 
 def day1():
     # 声明变量
@@ -36,20 +30,26 @@ def yunsuan(a,b):
 def fanzhi(a,b):
     c=a*b
     return c
-
-
+def str_caozuo():
+    a='kasd,mdjs,alk,hfasd'
+    #find 查找 显示的是m的下标,
+    print(a.find("mdjs"))
+    #split 切割,以什么切割''里放什么,生成的是列表
+    print(a.split(','))
+    #replace 替换,把a用1替换
+    print(a.replace('a','1'))
 
 
 if __name__ == '__main__':
     # def3()
     # def1()
     # def2()
-
+    str_caozuo()
     # day1()
-    pingjie()
-    yunsuan(6,2)
-    c=fanzhi(3,4)
-    print(c)
+    # pingjie()
+    # yunsuan(6,2)
+    # c=fanzhi(3,4)
+    # print(c)
 
 
 
