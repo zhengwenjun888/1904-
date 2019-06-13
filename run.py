@@ -8,5 +8,5 @@ if __name__ == '__main__':
         shell.invoke(cmd)
     except:
         raise
-    print('cbvcg')
+    print('')
 

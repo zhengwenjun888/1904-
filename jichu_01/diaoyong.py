@@ -1,4 +1,4 @@
-from day_01 import base_type
+from jichu_01 import base_type
 
 
 

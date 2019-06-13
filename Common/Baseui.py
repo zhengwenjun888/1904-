@@ -15,8 +15,17 @@ from selenium.webdriver.common.by import By
 def shot(func):
     def function(*args, **kwargs):
         allure.attach(args[0].driver.get_screenshot_as_png(), args[1] + '之前', allure.attachment_type.PNG)
-
-        res = func(*args, **kwargs)
+        i = 1
+        res = None
+        while(i <= 3):
+            try:
+                res = func(*args, **kwargs)
+                break
+            except :
+                if i == 3:
+                    allure.attach(args[0].driver.get_screenshot_as_png(), args[1] + '之后', allure.attachment_type.PNG)
+                    raise
+                i += 1
         allure.attach(args[0].driver.get_screenshot_as_png(), args[1] + '之后', allure.attachment_type.PNG)
         return res
     return function
@@ -24,16 +33,17 @@ def shot(func):
 
 class baseUI():
 
-    def __init__(self, driver: object) -> object:
+    def __init__(self,driver):
         self.driver = driver
 
 
 
+
     def local_element(self,xpath):
-       return WebDriverWait(self.driver, 5, 0.3).until(EC.presence_of_element_located((By.XPATH,xpath)))
+        return WebDriverWait(self.driver, 5, 0.5).until(EC.presence_of_element_located((By.XPATH, xpath)))
 
     @shot
-    def send_keys(self, step: object, xpath: object, text: object) -> object:
+    def send_keys(self,step,xpath,text):
         '''
         文本输入框清空并填值
         :param step:操作步骤
@@ -54,8 +64,10 @@ class baseUI():
         :param xpath: xpath
         :return:
         '''
+
         element = self.local_element(xpath)
-        element.click()
+        ActionChains(self.driver).move_to_element(element).click().perform()
+        #element.click()
     @shot
     def scroll_screen(self,step):
         '''
@@ -137,7 +149,7 @@ class baseUI():
         return current
 
     @shot
-    def switch_to_alter_accept(self,step):
+    def switch_to_alert_accept(self,step):
         '''
         #窗口切换至弹窗并确认
         :param step:操作步骤
@@ -152,7 +164,7 @@ class baseUI():
         self.driver.switch_to_alert().accept()
 
     @shot
-    def switch_to_alter_dismiss(self,step):
+    def switch_to_atert_dismiss(self,step):
         '''
         #窗口切换至弹窗并取消
         :param step:操作步骤
@@ -167,7 +179,7 @@ class baseUI():
         self.driver.switch_to_alert().dismiss()
 
     @shot
-    def switch_to_alter_send_keys(self,step,text):
+    def switch_to_alert_send_keys(self,step,text):
         '''
         #窗口切换至弹窗输入内容并确定
         :param step: 操作步骤
@@ -237,6 +249,40 @@ class baseUI():
             self.execute_script(js)
         except:
             print("修改属性值失败，属性名:" + attribute_name + " 属性值:" + attribute_value)
+            raise
+
+    @shot
+    def js_click_by_xpath(self,step,xpath):
+        '''
+        #通过xpath执行js代码点击元素
+        :param step: 操作步骤
+        :param xpath: xpath
+        :return:
+        '''
+        try:
+            self.local_element(xpath)
+            js = "var xpath = \"" + self.double_to_single_mark(
+            xpath) + "\";var element = document.evaluate(xpath,document,null,XPathResult.ANY_TYPE,null).iterateNext();element.click();"
+            self.execute_script(js)
+        except:
+            print("使用js点击失败，xpath为：" + xpath)
+            raise
+
+    @shot
+    def click_by_js(self, step, xpath):
+        '''
+        #通过xpath执行js代码点击元素
+        :param step:操作步骤
+        :param xpath:xpath
+        :return:
+        '''
+        try:
+            self.local_element(xpath)
+            js = "var xpath = \"" + self.double_to_single_mark(
+                xpath) + "\";var element = document.evaluate(xpath,document,null,XPathResult.ANY_TYPE,null).iterateNext();element.click();"
+            self.execute_script(js)
+        except:
+            print("点击元素失败:" + xpath)
             raise
 
     @shot
