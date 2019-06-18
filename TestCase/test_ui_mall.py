@@ -66,6 +66,7 @@ class Test_mall():
         base.click('点击确认退货','''//span[contains(text(),'确认退货')]''')
         base.click('点击确定',"//span[contains(text(),'确定')]")
         text=base.get_text('获取页面文本', '''//div[@role="alert"]//p''')
+
         assert '成功' in text
 
 

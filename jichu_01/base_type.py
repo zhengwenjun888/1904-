@@ -31,13 +31,21 @@ def fanzhi(a,b):
     c=a*b
     return c
 def str_caozuo():
-    a='kasd,mdjs,alk,hfasd'
+    i=1000
+    j=20
+    a='kasdmdjs,alkhfasd'
+    # 添加
+    a='kasdmdjs,'+str(i)+'alkhfasd'
+    print(a)
     #find 查找 显示的是m的下标,
     print(a.find("mdjs"))
     #split 切割,以什么切割''里放什么,生成的是列表
     print(a.split(','))
     #replace 替换,把a用1替换
     print(a.replace('a','1'))
+#     添加
+
+
 
 
 if __name__ == '__main__':

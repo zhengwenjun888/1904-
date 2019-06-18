@@ -11,11 +11,9 @@ head={}
 url='http://192.168.60.132:1811'
 
 lists=[]
-excel_list = read_excel.read_excel_list('../table/zhuce.xlsx')
+excel_list = read_excel.read_excel_list('./table/zhuce.xlsx')
 for i in range(len(excel_list)):
     lists.append(excel_list[i].pop())
-
-
 
 @allure.feature('用户')
 class Test_order():
