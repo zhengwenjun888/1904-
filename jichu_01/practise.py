@@ -42,3 +42,21 @@ for i in li:
        new_li.append(i)
 print(new_li)
 
+
+# 质数判断101以内
+
+num=[]
+for i in range (2,101+1):
+    for j in range(2,i):
+        if i % j==0:
+            break
+    else:
+        num.append(i)
+print(num)
+
+# list转字典,下标为key值为元素
+list=[1,2,3,4,5,6]
+dict={}
+for i in range (len(list)):
+    dict[i]=list[i]
+print(dict)
