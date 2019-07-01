@@ -47,14 +47,14 @@ time.sleep(2)
 # 超链接操作
 action=ActionChains(driver)
 ele=driver.find_element_by_link_text('问问度娘')
-action.key_down(Keys.CONTROL).click('ele').key_up(Keys.CONTROL).perform()
+action.key_down(Keys.CONTROL).click(ele).key_up(Keys.CONTROL).perform()
 time.sleep(2)
 
 # 浏览器title切换
 handle=driver.window_handles
 for i in handle:
     driver.switch_to.window(i)
-    if(driver.title.__contains__('问问度娘')):
+    if driver.title.__contains__('问问度娘'):
         break
 
 # 后退
